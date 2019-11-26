@@ -18,6 +18,7 @@ const App = () => (
         <ImageGb>
           <FixedRatio key={i}>
             <Image
+              lazy
               style={{ objectFit: 'cover' }}
               src="http://switch-box.net/wp-content/uploads/2012/12/free-wallpaper-social-wallpapering-02.jpg"
             />
