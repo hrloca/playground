@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "echo test.",
     "dev": "webpack-dev-server",
     "build": "webpack"
   },
@@ -19,6 +20,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
+      "pre-push": "run-s test",
       "commit-msg": "commitlint -e"
     }
   },
