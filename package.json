@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo run test.",
     "dev": "webpack-dev-server",
-    "build": "webpack"
+    "build": "NODE_ENV=production webpack",
+    "dist:commit": "git add ./dist && git commit --ammend --no-edit"
   },
   "author": "",
   "license": "ISC",
@@ -20,7 +21,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "run-s test",
+      "pre-push": "run-s test build dist:commit",
       "commit-msg": "commitlint -e"
     }
   },
