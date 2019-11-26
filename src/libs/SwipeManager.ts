@@ -5,7 +5,7 @@ const getPage = (page: string, event: any): number =>
   event.changedTouches ? event.changedTouches[0][page] : event[page]
 
 type Axis2d = 'x' | 'y'
-type Handler = (e: Event, delta: EventData) => void
+export type Handler = (e: Event, delta: EventData) => void
 
 export interface SwipeManagerOption {
   DISTANCE_THRESHOLD?: number
@@ -41,30 +41,55 @@ export interface SwipeManager {
 
 export class SwipeManager implements SwipeManager {
   private el: any
+
   private startPagePoint!: Point
+
   private pagePoint!: Point
+
   private isGrab!: boolean
+
   private isLock!: boolean
+
   private isOver!: boolean
+
   private isSwiped!: boolean
+
   private startTime!: number
+
   private swipingTime!: number
+
   private delta!: Point3D
+
   private moveAmountPoint!: Point
+
   private grabbedPoint!: Point
+
   private grabingPoint!: Point
+
   private axis!: '' | Axis2d
+
   private withinRange!: boolean
+
   private max!: number
+
   private onGrab?: Handler
+
   private onGrabing?: Handler
+
   private onSwipeUp?: Handler
+
   private onSwipeDown?: Handler
+
   private onSwipeRight?: Handler
+
   private onSwipeLeft?: Handler
+
   private onSwipeUpAuto?: Handler
+
   private onSwipeDownAuto?: Handler
+
   private onSwipeRightAuto?: Handler
+
   private onSwipeLeftAuto?: Handler
 
   constructor(el: any, opt: SwipeManagerOption = {}) {
@@ -85,11 +110,20 @@ export class SwipeManager implements SwipeManager {
   }
 
   initHandler(opt: SwipeManagerOption) {
-    this.useSwipeX = !!opt.onSwipeRight || !!opt.onSwipeLeft || !!opt.onSwipeRightAuto || !!opt.onSwipeLeftAuto
+    this.useSwipeX =
+      !!opt.onSwipeRight ||
+      !!opt.onSwipeLeft ||
+      !!opt.onSwipeRightAuto ||
+      !!opt.onSwipeLeftAuto
 
-    this.useSwipeY = !!opt.onSwipeUp || !!opt.onSwipeDown || !!opt.onSwipeUpAuto || !!opt.onSwipeDownAuto
+    this.useSwipeY =
+      !!opt.onSwipeUp ||
+      !!opt.onSwipeDown ||
+      !!opt.onSwipeUpAuto ||
+      !!opt.onSwipeDownAuto
 
-    this.useGrab = this.useSwipeY || this.useSwipeX || !!opt.onGrab || !!opt.onGrabing
+    this.useGrab =
+      this.useSwipeY || this.useSwipeX || !!opt.onGrab || !!opt.onGrabing
 
     this.onGrab = opt.onGrab
     this.onGrabing = opt.onGrabing
@@ -199,7 +233,9 @@ export class SwipeManager implements SwipeManager {
     const absCurrentPoint: Point = this.grabingPoint.abs
     const diff: Point = absNextPoint.sub(absCurrentPoint)
     const absNext: number = absNextPoint[this.axis as Axis2d]
-    const isIncrease: boolean = this.whetherItIncrease(diff[this.axis as Axis2d])
+    const isIncrease: boolean = this.whetherItIncrease(
+      diff[this.axis as Axis2d]
+    )
     if (isIncrease) this.max = absNext
     this.isOver = this.whetherItOver(absNext)
     this.withinRange = this.whetherWithinRange(absNext)

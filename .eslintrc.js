@@ -28,6 +28,8 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'react-hooks/rules-of-hooks': 'off',
     'import/no-unresolved': 'off',
+    'no-new': 'off',
+    'class-methods-use-this': 'off',
   },
   env: {
     browser: true,
