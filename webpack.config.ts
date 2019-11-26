@@ -21,7 +21,7 @@ const config: webpack.Configuration = {
     extensions: ['.ts', '.tsx', '.js'],
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, 'docs'),
     compress: true,
     port: 3000,
   },
