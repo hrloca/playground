@@ -13,21 +13,21 @@ const ImageGb = styled(View)({
 
 const App = () => (
   <>
-      {
-        Array.from(Array(20)).map((_, i) => {
-          return (
-            <ImageGb>
-              <FixedRatio key={i}>
-                <Image style={{ objectFit: 'cover' }} src="http://switch-box.net/wp-content/uploads/2012/12/free-wallpaper-social-wallpapering-02.jpg" />
-              </FixedRatio>
-            </ImageGb>
-          )
-        })
-      }
+    {Array.from(Array(20)).map((_, i) => {
+      return (
+        <ImageGb>
+          <FixedRatio key={i}>
+            <Image
+              style={{ objectFit: 'cover' }}
+              src="http://switch-box.net/wp-content/uploads/2012/12/free-wallpaper-social-wallpapering-02.jpg"
+            />
+          </FixedRatio>
+        </ImageGb>
+      )
+    })}
   </>
 )
 
-render(
-  <App />,
-  document.getElementById('app'),
-)
+console.log('test')
+
+render(<App />, document.getElementById('app'))

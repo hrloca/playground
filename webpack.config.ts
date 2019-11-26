@@ -7,23 +7,23 @@ const config: webpack.Configuration = {
   entry: './src/index.tsx',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(process.cwd() + '/dist')
+    path: path.resolve(`${process.cwd()}/docs`),
   },
   module: {
     rules: [
       {
         test: /\.(ts|tsx)$/,
         use: 'ts-loader',
-      }
-    ]
+      },
+    ],
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js']
+    extensions: ['.ts', '.tsx', '.js'],
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    port: 3000
+    port: 3000,
   },
   plugins: [
     new HtmlWebpackPlugin({

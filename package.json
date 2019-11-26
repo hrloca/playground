@@ -7,7 +7,7 @@
     "test": "echo run test.",
     "dev": "webpack-dev-server",
     "build": "NODE_ENV=production webpack",
-    "dist:commit": "git add ./dist && git commit --amend --no-edit"
+    "dist:commit": "git add ./docs && git commit --amend --no-edit"
   },
   "author": "",
   "license": "ISC",
@@ -46,7 +46,9 @@
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
     "eslint": "^6.7.1",
+    "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.1",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^3.1.0",

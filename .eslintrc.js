@@ -1,6 +1,9 @@
 module.exports = {
   root: true,
-  extends: ['plugin:prettier/recommended'],
+  extends: [
+    'airbnb-base',
+    'plugin:prettier/recommended',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.json',
@@ -22,6 +25,9 @@ module.exports = {
     'no-mixed-operators': ['error', { allowSamePrecedence: true }],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'off',
+    'import/no-extraneous-dependencies': 'off',
+    'react-hooks/rules-of-hooks': 'off',
+    'import/no-unresolved': 'off',
   },
   env: {
     browser: true,
