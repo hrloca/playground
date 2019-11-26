@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo test.",
+    "test": "echo run test.",
     "dev": "webpack-dev-server",
     "build": "webpack"
   },
