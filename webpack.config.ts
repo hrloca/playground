@@ -2,8 +2,10 @@ import webpack from 'webpack'
 import path from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 
+type Mode = 'development' | 'production' | 'none'
+
 const config: webpack.Configuration = {
-  mode: process.env.NODE_ENV || 'production',
+  mode: (process.env.NODE_ENV as Mode) || 'production',
   devtool: 'source-map',
   entry: './src/index.tsx',
   output: {
