@@ -66,7 +66,12 @@ const CarouselComponent = <T extends any>(
     swipeable.current,
   ])
   const onGrabing = useCallback(
-    (_, { point }, isOver) => swipeable.current?.handle(point.x, isOver),
+    (e, { point }, isOver, axis) => {
+      if (axis === 'x') {
+        e.preventDefault()
+        swipeable.current?.handle(point.x, isOver)
+      }
+    },
     [swipeable.current]
   )
 

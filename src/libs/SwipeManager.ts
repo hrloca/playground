@@ -10,7 +10,8 @@ export type Handler = (e: Event, delta: EventData) => void
 export type HandlerWithIsOver = (
   e: Event,
   delta: EventData,
-  isOver: boolean
+  isOver: boolean,
+  axis: Axis2d
 ) => void
 
 export interface SwipeManagerOption {
@@ -20,7 +21,7 @@ export interface SwipeManagerOption {
   RELEASE_THRESHOLD?: number
   onGrab?: Handler
   onGrabing?: HandlerWithIsOver
-  onGrabEnd?: Handler
+  onGrabEnd?: HandlerWithIsOver
   onSwipeUp?: Handler
   onSwipeDown?: Handler
   onSwipeRight?: Handler
@@ -83,7 +84,7 @@ export class SwipeManager implements SwipeManager {
 
   private onGrabing?: HandlerWithIsOver
 
-  private onGrabEnd?: Handler
+  private onGrabEnd?: HandlerWithIsOver
 
   private onSwipeUp?: Handler
 
@@ -230,7 +231,7 @@ export class SwipeManager implements SwipeManager {
     }
     if (this.isGrabing) {
       this.swipingHandler()
-      this.onGrabing?.(e, this.eventData, this.isOver)
+      this.onGrabing?.(e, this.eventData, this.isOver, this.axis as Axis2d)
       if (this.isOver && !this.isSwiped) {
         this.swipeAutoDispatch(e)
       }
@@ -239,7 +240,7 @@ export class SwipeManager implements SwipeManager {
 
   private touchEnd(e: Event): void {
     if (this.isOver && this.withinRange) this.swipedDispatcher(e)
-    this.onGrabEnd?.(e, this.eventData)
+    this.onGrabEnd?.(e, this.eventData, this.isOver, this.axis as Axis2d)
     this.reset()
   }
 
